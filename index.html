@@ -18,7 +18,7 @@
 <meta property="og:url" content="https://www.chennaiparkour.fit/">
 <meta property="og:title" content="Chennai Parkour — Movement for Everybody">
 <meta property="og:description" content="India's premier parkour and functional movement academy. Structured training in parkour, calisthenics, gymnastics & Silambam. Join us in Chennai — Ekkattuthangal & Injambakkam.">
-<meta property="og:image" content="https://www.chennaiparkour.fit/og-image.jpg">
+<meta property="og:image" content="https://www.chennaiparkour.fit/logo.png">
 <meta property="og:locale" content="en_IN">
 <meta property="og:site_name" content="Chennai Parkour">
 
@@ -27,7 +27,7 @@
 <meta name="twitter:site" content="@chennaiparkour">
 <meta name="twitter:title" content="Chennai Parkour — Movement for Everybody">
 <meta name="twitter:description" content="India's premier parkour and functional movement academy in Chennai. Join our community at Ekkattuthangal & Injambakkam.">
-<meta name="twitter:image" content="https://www.chennaiparkour.fit/og-image.jpg">
+<meta name="twitter:image" content="https://www.chennaiparkour.fit/logo.png">
 
 <!-- Local Business / Structured Data -->
 <script type="application/ld+json">
@@ -120,7 +120,7 @@ nav.sc { top:10px; background:rgba(8,8,8,0.93); border-color:rgba(245,194,0,0.28
 .flogo-img { width:60px; height:60px; object-fit:contain; filter:brightness(0) invert(1); }
 .nl-text { display:flex; flex-direction:column; line-height:1; }
 .nl-text s { font-family:var(--impact); font-size:18px; letter-spacing:3px; color:var(--white); text-decoration:none; }
-.nl-text em { font-family:var(--serif); font-size:10px; letter-spacing:4px; color:var(--yellow); font-style:italic; }
+.nl-text em { font-family:var(--serif); font-size:10px; letter-spacing:2.5px; color:var(--yellow); font-style:italic; font-weight:600; white-space:nowrap; opacity:0.9; }
 .nm { display:flex; align-items:center; gap:36px; list-style:none; }
 .nm a { color:var(--light); text-decoration:none; font-size:10px; font-weight:500; letter-spacing:2.5px; text-transform:uppercase; transition:color .3s; position:relative; }
 .nm a::after { content:''; position:absolute; bottom:-4px; left:0; width:0; height:1px; background:var(--yellow); transition:width .3s; }
@@ -290,7 +290,9 @@ section { position:relative; }
 
 /* FOOTER */
 footer { background:var(--charcoal); border-top:1px solid var(--border); padding:64px 80px 40px; }
-.ftop { display:grid; grid-template-columns:1.5fr 1fr 1fr 1fr; gap:60px; margin-bottom:56px; max-width:1400px; margin:0 auto 56px; }
+.ftop { display:flex; justify-content:space-between; align-items:flex-start; gap:60px; margin:0 auto 56px; max-width:1400px; }
+.ftop > div:last-child { text-align:right; }
+.ftop > div:last-child .flinks { align-items:flex-end; }
 .flog { display:flex; align-items:center; gap:12px; margin-bottom:18px; text-decoration:none; }
 .flt { display:flex; flex-direction:column; line-height:1; }
 .flt s { font-family:var(--impact); font-size:18px; letter-spacing:3px; color:var(--white); text-decoration:none; }
@@ -336,14 +338,13 @@ footer { background:var(--charcoal); border-top:1px solid var(--border); padding
   .hstats { display:none; }
 }
 @media(max-width:768px){
-  body { padding-left:0 !important; cursor:auto !important; }
-  #strip, #athlete { display:none !important; }
+  body { padding-left:72px !important; cursor:auto !important; }
   .cur, .cur-r { display:none !important; }
   nav {
     top:8px !important;
     left:50% !important;
     transform:translateX(-50%) !important;
-    width:calc(100% - 24px) !important;
+    width:calc(100% - 72px - 16px) !important;
     padding:0 16px !important;
     height:56px !important;
   }
@@ -393,12 +394,12 @@ footer { background:var(--charcoal); border-top:1px solid var(--border); padding
 /* Hide custom cursor on touch/non-pointer devices */
 @media(hover:none),(pointer:coarse){
   .cur, .cur-r { display:none !important; }
-  body { cursor:auto !important; }
+  body { padding-left:72px !important; cursor:auto !important; }
 }
 /* Tablet adjustments */
 @media(max-width:1100px){
   .si,.rg { padding:0 40px; }
-  nav { width:calc(100% - 40px); padding:0 24px; }
+  nav { width:calc(100% - 72px - 40px); padding:0 24px; }
   .hc { padding:0 40px 0; }
   .ag,.wintro,.rg { grid-template-columns:1fr; gap:48px; }
   .pg,.chg,.wp3 { grid-template-columns:1fr 1fr; }
@@ -424,9 +425,14 @@ footer { background:var(--charcoal); border-top:1px solid var(--border); padding
   z-index:9500;
   pointer-events:none;
 }
+/* ── Strip stays 72px on all screens to preserve skyline silhouette DNA ── */
+/* Athlete scales down slightly on mobile for proportion */
+@media(max-width:768px){
+  #athlete { width:28px; height:28px; }
+}
 .pose {
   position:absolute;
-  width:38px; height:38px;
+  width:100%; height:100%;
   left:0; top:0; opacity:0;
 }
 </style>
@@ -813,9 +819,31 @@ footer { background:var(--charcoal); border-top:1px solid var(--border); padding
   .phil-principle { grid-template-columns: 1fr; min-height: auto; }
   .phil-principle.flip { direction: ltr; }
   .phil-p-statement-col { padding: 80px 28px 60px; }
-  .phil-p-visual-col { min-height: 280px; }
   .phil-p-index { font-size: 28vw; }
   .phil-closing { padding: 80px 28px; }
+
+  /* Fix: prevent stat from overlapping the word text on mobile */
+  .phil-p-visual-col {
+    min-height: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 16px;
+    padding: 48px 24px 40px;
+  }
+  .phil-p-visual-word {
+    font-size: clamp(36px, 9vw, 56px);
+    position: relative;
+    z-index: 1;
+  }
+  .phil-p-visual-stat {
+    position: static;
+    text-align: center;
+    z-index: 1;
+  }
+  .phil-p-visual-stat .stat-num { font-size: 40px; }
+  .phil-p-visual-stat .stat-label { text-align: center; }
 }
 </style>
 
@@ -1097,7 +1125,7 @@ footer { background:var(--charcoal); border-top:1px solid var(--border); padding
           <path d="M10 38L38 38" stroke-linecap="round"/>
         </svg>
         <div class="ptag">Kids & Community</div>
-        <h3 class="pname">Kids Programs & Fun Events</h3>
+        <h3 class="pname">Kids Birthdays & Fun Events</h3>
         <p class="pdesc">Screen-free, Joy-first sessions where children jump, climb, crawl, and play — building real physical confidence, coordination, and fearlessness in a safe, supportive space.</p>
         <p class="pdesc">Community events, Birthday Parkour parties, School outreach and seasonal movement festivals that make fitness feel like play — because it should.</p>
         <div class="pskills"><span class="sk">Kids</span><span class="sk">Play</span><span class="sk">Events</span><span class="sk">Community</span><span class="sk">Birthdays</span><span class="sk">Schools</span></div>
@@ -1295,14 +1323,18 @@ const WAYPOINTS = [
 function clamp(v, lo, hi) { return Math.max(lo, Math.min(hi, v)); }
 function lerp(a, b, t) { return a + (b - a) * t; }
 
-// Nav bottom edge — athlete is never allowed above this
-const NAV_BOTTOM = 96;
+// Strip is 72px wide. Athlete sits ON the right tip of each building,
+// intentionally overhanging the strip edge — this is the correct design.
+// Do NOT clamp left: the waypoints place the athlete's centre on the building tip.
+function getNavBottom() {
+  const nav = document.getElementById('nav');
+  return nav ? nav.getBoundingClientRect().bottom + 8 : 104;
+}
 
 function waypointPos(i) {
   const [lx, vhFrac, off] = WAYPOINTS[i];
-  // Clamp so athlete is always below the nav bar regardless of screen size
   const rawTop = window.innerHeight * vhFrac - off;
-  return { left: lx, top: Math.max(NAV_BOTTOM + 8, rawTop) };
+  return { left: lx, top: Math.max(getNavBottom(), rawTop) };
 }
 
 function update() {
