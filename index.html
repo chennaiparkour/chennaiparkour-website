@@ -1077,7 +1077,7 @@ footer { background:var(--charcoal); border-top:1px solid var(--border); padding
       </div>
       <div class="fu" style="transition-delay:.15s">
         <div class="lf-formwrap" style="background:var(--charcoal);border:1px solid var(--border);border-radius:4px;overflow:hidden;">
-          <iframe id="ziframe_65616" aria-label="Web Enquiries" frameborder="0" style="height:920px;width:100%;border:none;display:block;" src='https://forms.zohopublic.in/cpkformszoho1/form/WebsiteLeads/formperma/JdH2H50F6gaokRRyTUzDz5V_0EQ9sQ6OEVGA_8cIyiU'></iframe>
+          <iframe id="ziframe_65616" aria-label="Web Enquiries" frameborder="0" style="height:920px;width:100%;border:none;display:block;" src='https://forms.zohopublic.in/cpkformszoho1/form/WebsiteLeads/formperma/JdH2H50F6gaokRRyTUzDz5V_0EQ9sQ6OEVGA_8cIyiU?zf_rszfm=1'></iframe>
         </div>
         <div class="lf-note">We'll contact you via WhatsApp or call within 24 hours.</div>
         <script type="text/javascript">
@@ -1100,6 +1100,22 @@ footer { background:var(--charcoal); border-top:1px solid var(--border); padding
             if (zf_frame.src !== ifrmSrc) { zf_frame.src = ifrmSrc; }
           } catch (e) {}
         })();
+        window.addEventListener('message', function (event) {
+          try {
+            var evntData = event.data;
+            if (evntData && typeof evntData === 'string') {
+              var zf_ifrm_data = evntData.split("|");
+              if (zf_ifrm_data.length === 2 || zf_ifrm_data.length === 3) {
+                var zf_perma = zf_ifrm_data[0];
+                var zf_ifrm_ht_nw = (parseInt(zf_ifrm_data[1], 10) + 15) + "px";
+                var iframe = document.getElementById("ziframe_65616");
+                if (iframe && iframe.src.indexOf('formperma') > 0 && iframe.src.indexOf(zf_perma) > 0) {
+                  if (iframe.style.height !== zf_ifrm_ht_nw) { iframe.style.height = zf_ifrm_ht_nw; }
+                }
+              }
+            }
+          } catch (e) {}
+        }, false);
         </script>
       </div>
     </div>
